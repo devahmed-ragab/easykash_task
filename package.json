@@ -4,10 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc",
+    "jasmine": "jasmine",
+    "test": "npm run jasmine",
+    "build:test": "npm run build && npm run jasmine",
+    "build:start":  "node ./dist/app.js",
+    "dev:start": "nodemon ./src/app.ts"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+  ],
+  "author": "Ahmed Ragab",
   "license": "ISC",
   "devDependencies": {
     "@types/jasmine": "^4.0.3",
