@@ -19,4 +19,5 @@ export enum HttpStatus {
 	created = 201,
 	badReq = 400,
 	Unauthorized = 401,
+	serverError = 500,
 }

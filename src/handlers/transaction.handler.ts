@@ -45,7 +45,7 @@ async function index(req: Request, res: Response): Promise<void> {
 
 		res.status(HttpStatus.ok).json(result_transaction);
 	} catch (err) {
-		res.status(HttpStatus.badReq).json({
+		res.status(HttpStatus.serverError).json({
 			error: {
 				status: BadTransaction.status,
 				message: BadTransaction.allTransactions,
