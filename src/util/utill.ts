@@ -1,5 +1,20 @@
 import { Seller } from "../models/Seller";
 import { Transaction } from "../models/Transaction";
+import { Duration } from "./types";
+
+export function dateFromDuration(duration: Duration): string[] {
+	const durationArray = duration.split("to");
+	const dates: string[] = [];
+
+	const startDate = new Date(durationArray[0]).toISOString();
+	const endDate = new Date(durationArray[1]).toISOString();
+
+	dates.push(startDate);
+	dates.push(endDate);
+
+	console.log("dates = ", dates);
+	return dates;
+}
 
 export async function generateData(num: number): Promise<void> {
 	/**

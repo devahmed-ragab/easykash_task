@@ -28,18 +28,4 @@ export class Transaction extends Model {
 	@AllowNull(false)
 	@Column
 	readonly updatedAt!: Date;
-
-	static dateFromDuration(duration: Duration): string[] {
-		const durationArray = duration.split("to");
-		const dates: string[] = [];
-
-		const startDate = new Date(durationArray[0]).toISOString();
-		const endDate = new Date(durationArray[1]).toISOString();
-
-		dates.push(startDate);
-		dates.push(endDate);
-
-		console.log("dates = ", dates);
-		return dates;
-	}
 }

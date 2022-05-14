@@ -4,6 +4,7 @@ import { Op, col } from "sequelize";
 
 import { BadTransaction, HttpStatus } from "../util/enums";
 import { Transaction } from "../models/Transaction";
+import { dateFromDuration } from "../util/utill";
 import { Duration } from "../util/types";
 
 async function index(req: Request, res: Response): Promise<void> {
@@ -14,7 +15,7 @@ async function index(req: Request, res: Response): Promise<void> {
 	const totalTransactions = offset + perPage;
 
 	try {
-		const duration = Transaction.dateFromDuration(date_range as Duration);
+		const duration = dateFromDuration(date_range as Duration);
 
 		const transactions = await Transaction.findAll({
 			order: col("id"),
