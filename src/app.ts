@@ -2,6 +2,7 @@ import { sequelize } from "./sequelize";
 
 import express from "express";
 import helmet from "helmet";
+import cors from "cors";
 
 import { config } from "./config/config";
 import { MODELS } from "./models/models.index";
@@ -14,6 +15,7 @@ const port = config.server_port || 3000;
 const app = express();
 
 app.use(helmet());
+app.use(cors());
 app.use(loger);
 
 transaction_routes(app);
