@@ -1,5 +1,4 @@
 import { Request, Response, Application } from "express";
-
 import { Op, col, fn } from "sequelize";
 
 import { Seller } from "../models/Seller";
@@ -7,6 +6,7 @@ import { Duration } from "../util/types";
 import { dateFromDuration } from "../util/utill";
 import { Transaction } from "../models/Transaction";
 import { BadSeller, HttpStatus } from "../util/enums";
+import auth from "../middlewares/authentication";
 
 async function index(req: Request, res: Response): Promise<void> {
 	const sellerId = Number(req.query.seller_id);
@@ -51,5 +51,5 @@ async function index(req: Request, res: Response): Promise<void> {
 }
 
 export const seller_routes = (app: Application): void => {
-	app.get("/sellers/transactions-summary", index);
+	app.get("/sellers/transactions-summary", auth, index);
 };

@@ -6,6 +6,7 @@ import { BadTransaction, HttpStatus } from "../util/enums";
 import { Transaction } from "../models/Transaction";
 import { dateFromDuration } from "../util/utill";
 import { Duration } from "../util/types";
+import auth from "../middlewares/authentication";
 
 async function index(req: Request, res: Response): Promise<void> {
 	const perPage = Number(req.query.per_page);
@@ -55,5 +56,5 @@ async function index(req: Request, res: Response): Promise<void> {
 }
 
 export const transaction_routes = (app: Application): void => {
-	app.get("/transactions", index);
+	app.get("/transactions", auth, index);
 };

@@ -129,6 +129,24 @@ This app use Bearer Token:
                                     per_page: number,
                                     seller_id: number,
                                     date_range:DatetoDate
-                                    } => Token",
+                                    } =>
+                                                  {
+                                                    data: {
+                                                        transactions: [
+                                                            {
+                                                            id,
+                                                            title,
+                                                            image,
+                                                            price,
+                                                            last_updated,
+                                                            }
+                                                        ],
+                                                        paging: {
+                                                        total: 20,
+                                                        current_page: 1,
+                                                        per_page: 10
+                                                        }
+                                                    };
+  }",
 
 ```
