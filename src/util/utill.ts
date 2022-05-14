@@ -12,7 +12,6 @@ export function dateFromDuration(duration: Duration): string[] {
 	dates.push(startDate);
 	dates.push(endDate);
 
-	console.log("dates = ", dates);
 	return dates;
 }
 

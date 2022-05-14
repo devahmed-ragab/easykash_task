@@ -1,6 +1,5 @@
 import { Table, Model, Column, CreatedAt, UpdatedAt, AllowNull, ForeignKey } from "sequelize-typescript";
 
-import { Duration } from "../util/types";
 import { Seller } from "./Seller";
 
 @Table({ timestamps: true, tableName: "transactions" })
@@ -12,7 +11,7 @@ export class Transaction extends Model {
 	image!: string;
 
 	@Column
-	price!: string;
+	price!: number;
 
 	@ForeignKey(() => Seller)
 	@AllowNull(false)
