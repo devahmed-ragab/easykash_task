@@ -2,7 +2,7 @@
 
 ## Description:
 
-EASYKASH API is an endpoints powered by mysql, Typescript express/nodejs and tested with [jasmine](https://www.npmjs.com/package/jasmine)/[supertest](https://www.npmjs.com/package/supertest), protected with [jwt](https://www.npmjs.com/package/jsonwebtoken), [bcrypt](https://www.npmjs.com/package/bcrypt) and suported by eslint/prittier, it manage/stores orders and products.
+EASYKASH API is an endpoints powered by mysql, Typescript express/nodejs and tested with [jasmine](https://www.npmjs.com/package/jasmine)/[supertest](https://www.npmjs.com/package/supertest),and suported by eslint/prittier.
 
 ## Installation
 
