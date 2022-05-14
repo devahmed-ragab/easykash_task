@@ -9,6 +9,11 @@ export enum BadTransaction {
 	allTransactions = "Something Wrong Happend Couldn't fetch Transactions.",
 }
 
+export enum BadSeller {
+	status = "faild",
+	allTransactions = "Something Wrong Happend Couldn't fetch seller summary.",
+}
+
 export enum HttpStatus {
 	ok = 200,
 	created = 201,

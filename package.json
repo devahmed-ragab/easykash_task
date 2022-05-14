@@ -7,9 +7,9 @@
     "lint": "eslint --ignore-path .gitignore --ext .ts --fix .",
     "format": "prettier --ignore-path .gitignore --write **.ts",
     "jasmine": "jasmine",
-    "test": "npm run jasmine",
+    "test:linux": "export NODE_ENV=test && npm run build && npm run jasmine",
+    "test:windows": "set NODE_ENV=test && npm run build && npm run jasmine",
     "build": "npm run lint && npx tsc",
-    "build:test": "npm run build && npm run jasmine",
     "build:start": "node ./dist/app.js",
     "dev:start": "nodemon ./src/app.ts"
   },
