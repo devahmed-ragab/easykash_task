@@ -41,4 +41,6 @@ export class Seller extends Model {
 	@AllowNull(false)
 	@Column
 	readonly updatedAt!: Date;
+
+	static readonly mustAttributes: string[] = ["seller_id", "date_range"];
 }

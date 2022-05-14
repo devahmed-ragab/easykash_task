@@ -27,4 +27,6 @@ export class Transaction extends Model {
 	@AllowNull(false)
 	@Column
 	readonly updatedAt!: Date;
+
+	static readonly mustAttributes: string[] = ["page", "per_page", "seller_id", "date_range"];
 }
