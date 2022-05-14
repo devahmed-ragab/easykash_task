@@ -7,6 +7,7 @@ import { config } from "./config/config";
 import { MODELS } from "./models/models.index";
 
 import { transaction_routes } from "./handlers/transaction.handler";
+import { seller_routes } from "./handlers/seller.handler";
 import { loger } from "./middlewares/util";
 
 const port = config.server_port || 3000;
@@ -16,6 +17,7 @@ app.use(helmet());
 app.use(loger);
 
 transaction_routes(app);
+seller_routes(app);
 
 app.use("/", async (req: express.Request, res: express.Response) => {
 	res.json("server is working");
