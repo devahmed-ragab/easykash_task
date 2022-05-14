@@ -41,7 +41,7 @@ export function validateSeller(req: Request, res: Response, next: NextFunction) 
 			const error: CustomError = {
 				error: {
 					status: HttpStatus.badReq,
-					message: `${value} is requierd as a number.`,
+					message: `${attr} is requierd as a number.`,
 				},
 			};
 			res.status(HttpStatus.badReq).json(error);

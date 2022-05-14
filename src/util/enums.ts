@@ -20,4 +20,6 @@ export enum HttpStatus {
 	badReq = 400,
 	Unauthorized = 401,
 	serverError = 500,
+	missingToken = 417,
+	invalidToken = 401,
 }
