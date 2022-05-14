@@ -2,11 +2,12 @@ import { Request, Response, Application } from "express";
 
 import { Op, col } from "sequelize";
 
-import { BadTransaction, HttpStatus } from "../util/enums";
-import { Transaction } from "../models/Transaction";
-import { dateFromDuration } from "../util/utill";
 import { Duration } from "../util/types";
 import auth from "../middlewares/authentication";
+import { dateFromDuration } from "../util/utill";
+import { Transaction } from "../models/Transaction";
+import { BadTransaction, HttpStatus } from "../util/enums";
+import { validateTransaction } from "../middlewares/validatores";
 
 async function index(req: Request, res: Response): Promise<void> {
 	const perPage = Number(req.query.per_page);
@@ -56,5 +57,5 @@ async function index(req: Request, res: Response): Promise<void> {
 }
 
 export const transaction_routes = (app: Application): void => {
-	app.get("/transactions", auth, index);
+	app.get("/transactions", auth, validateTransaction, index);
 };

@@ -35,7 +35,7 @@ export function validateTransaction(req: Request, res: Response, next: NextFunct
 export function validateSeller(req: Request, res: Response, next: NextFunction) {
 	const query = req.query;
 
-	for (const attr in Seller.mustAttributes) {
+	for (const attr of Seller.mustAttributes) {
 		const value = query[attr];
 		if (value == undefined || isNaN(Number(value))) {
 			const error: CustomError = {

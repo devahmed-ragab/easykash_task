@@ -7,6 +7,7 @@ import { BadSeller, HttpStatus } from "../util/enums";
 
 import { sequelize } from "../sequelize";
 import auth from "../middlewares/authentication";
+import { validateSeller } from "../middlewares/validatores";
 
 async function index(req: Request, res: Response): Promise<void> {
 	const sellerId = Number(req.query.seller_id);
@@ -50,5 +51,5 @@ async function index(req: Request, res: Response): Promise<void> {
 }
 
 export const seller_routes = (app: Application): void => {
-	app.get("/sellers/transactions-summary", auth, index);
+	app.get("/sellers/transactions-summary", auth, validateSeller, index);
 };
