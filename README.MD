@@ -23,9 +23,11 @@ EASYKASH API is an endpoints powered by mysql, Typescript express/nodejs and tes
     ```
     5- Create user.
     ```
+    #You can use root user and skip 5 and 6
+
      CREATE USER 'easycash_user'@'localhost' IDENTIFIED BY 'password';
     ```
-    6- Grant  database privileges to easycash_user in both databases.
+    6- Grant database privileges to easycash_user for both databases.
 
 ### App:
 
@@ -64,12 +66,11 @@ EASY_CASH_DB_PASSWORD =String
 HOST =String
 
 // database port
-//(should be 5432).
 DB_PORT =Number
 
 
-// this variable indicate wich database the app will work with.
-// it should be (test) or (dev).
+// this variable indicate which database the app will work with.
+// it should be test or dev.
 NODE_ENV =String
 
 SERVER_PORT=number
@@ -82,26 +83,31 @@ SERVER_PORT=number
 
 ## Run:
 
-### For Test run :
+### 1- Test:
 
-    // for macOs or linux.
-    ```
+Test commands change NODE_ENV to 'test' which's change Database.
+
+#### for macOs or linux.
+
     npm run test:linux
-    ```
-    // for windows.
-    ```
+
+#### for windows.
+
     npm run test:windows
-    ```
 
-### For Runing server:
+### 2- Server:
 
-        1- Run:
-            // this command will compile typesript to javascript.
-            npm run build
+#### Build:
 
-        2- Run:
-            // this command will start the app from dist directory.
-            build:start
+this command will format, lint and compile typesript to javascript into /dist directory.
+
+    npm run build
+
+#### Start:
+
+this command will start the app from dist directory.
+
+    npm run build:start
 
        3- Run:
             // will start server with nodemon.
@@ -111,42 +117,69 @@ SERVER_PORT=number
 
 ### To send Token:
 
-```
 This app use Bearer Token:
 
+```
 1-Add word 'Token' to rquest headers authorization.
-2-Add your token ("ABC") following 'Bearer' by one space.
+
+2-Add your token("ABC") following 'Token' by one space.
+
+Example:
+    Token ABC
 
 ```
 
-### 1- User EndPoints:
+### 1- Transactions:
+
+Return transaction listing for the logged in seller.
 
 ```
+GET:
+localhost:3000/transactions?page=1&per_page=10&seller_id=9&date_range=2015to2023
+: quiryParasm: {
+page: number,
+per_page: number,
+seller_id: number,
+date_range:DatetoDate
+} => {
+    data: {
+        transactions: [{
+            id:Number,
+            title:String,
+            image:String,
+            price:Numper,
+            last_updated:Date
+            }],
+        paging: {
+            total: 20,
+            current_page: 1,
+            per_page: 10
+              }
+        };
+}
+```
 
-    # Example
-    "GET: http://localhost:3000/transactions?page=1&per_page=10&seller_id=9&date_range=2015to2023 : quiryParasm =  {
-                                    page: number,
-                                    per_page: number,
-                                    seller_id: number,
-                                    date_range:DatetoDate
-                                    } =>
-                                                  {
-                                                    data: {
-                                                        transactions: [
-                                                            {
-                                                            id,
-                                                            title,
-                                                            image,
-                                                            price,
-                                                            last_updated,
-                                                            }
-                                                        ],
-                                                        paging: {
-                                                        total: 20,
-                                                        current_page: 1,
-                                                        per_page: 10
-                                                        }
-                                                    };
-  }",
+### 2- Seller:
+
+Enable a system admin to view the sales summary for sellers' incomes
+
+```
+GET:
+localhost:3000/sellers/transactions-summary?seller_id=1&date_range=2012-10-5to2022-5-4
+: quiryParasm: {
+    seller_id: number,
+    date_range: type Duration {`${Number | String}to${Number | String}`}
+}=> {
+     data: {
+          days: [
+              {
+              date: Date,
+              total_income: Number,
+              seller_name: String,
+              seller_id: Number
+              }
+          ]
+      }
+}
 
 ```
