@@ -6,7 +6,7 @@ import helmet from "helmet";
 import { config } from "./config/config";
 import { MODELS } from "./models/models.index";
 
-import { transaction_routes } from "./handlers/trabsaction.handler";
+import { transaction_routes } from "./handlers/transaction.handler";
 import { loger } from "./middlewares/util";
 
 const port = config.server_port || 3000;
