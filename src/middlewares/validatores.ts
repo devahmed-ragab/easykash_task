@@ -34,16 +34,22 @@ export function validateTransaction(req: Request, res: Response, next: NextFunct
 
 export function validateSeller(req: Request, res: Response, next: NextFunction) {
 	const query = req.query;
-
+	console.log("query", query);
 	for (const attr of Seller.mustAttributes) {
 		const value = query[attr];
-		if (value == undefined || isNaN(Number(value))) {
-			const error: CustomError = {
-				error: {
-					status: HttpStatus.badReq,
-					message: `${attr} is requierd as a number.`,
-				},
-			};
+		const error: CustomError = {
+			error: {
+				status: HttpStatus.badReq,
+				message: `${attr} is requierd as a number.`,
+			},
+		};
+
+		if (value == undefined) {
+			res.status(HttpStatus.badReq).json(error);
+			return;
+		}
+
+		if (value == "seller_id" && isNaN(Number(attr))) {
 			res.status(HttpStatus.badReq).json(error);
 			return;
 		}
